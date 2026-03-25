@@ -165,4 +165,84 @@ body::before {
 </audio>
 
 <script>
-let countdown = 3
+let countdown = 3;
+const countdownEl = document.getElementById('countdown');
+const title = document.getElementById('birthdayTitle');
+const cardContainer = document.getElementById('cardContainer');
+const card = document.getElementById('birthdayCard');
+const music = document.getElementById('birthdaySong');
+const toggle = document.getElementById('musicToggle');
+
+let interacted = false;
+
+/* COUNTDOWN */
+let interval = setInterval(() => {
+    countdown--;
+    countdownEl.innerText = countdown;
+
+    if (countdown < 0) {
+        clearInterval(interval);
+        countdownEl.style.display = 'none';
+        title.style.display = 'block';
+
+        setTimeout(() => {
+            cardContainer.classList.add('active');
+        }, 800);
+    }
+}, 1000);
+
+/* MUSIC */
+toggle.onclick = () => {
+    interacted = true;
+    if (music.paused) {
+        music.play();
+        toggle.innerText = "🔊";
+    } else {
+        music.pause();
+        toggle.innerText = "🔇";
+    }
+};
+
+/* CARD CLICK */
+card.onclick = () => {
+    card.innerHTML = `
+        <div class="wish-content">
+        🎉 Happy birthday Caca! 🎉<br><br>
+        Semoga semua impian kamu tercapai, selalu bahagia, sehat,
+        dan makin cantik setiap harinya ✨🥰
+        </div>
+    `;
+    music.play();
+    createConfetti();
+};
+
+/* CONFETTI */
+function createConfetti() {
+    for (let i = 0; i < 100; i++) {
+        let el = document.createElement("div");
+
+        el.style.position = "fixed";
+        el.style.left = Math.random()*100 + "vw";
+        el.style.top = "-10px";
+        el.style.width = "6px";
+        el.style.height = "6px";
+        el.style.background = "hsl(" + Math.random()*360 + ",100%,50%)";
+        el.style.animation = "fall 5s linear forwards";
+
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 5000);
+    }
+}
+
+/* STARS */
+for (let i = 0; i < 60; i++) {
+    let s = document.createElement("div");
+    s.className = "star";
+    s.style.top = Math.random()*100 + "vh";
+    s.style.left = Math.random()*100 + "vw";
+    document.body.appendChild(s);
+}
+</script>
+
+</body>
+</html>
