@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Caca 🎉</title>
+    <style>
+        /* Your existing CSS stays the same until the balloon section */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
 <script>
 let countdown = 3;
 const countdownEl = document.getElementById('countdown');
@@ -22,26 +34,396 @@ function typeWriter(element, text, speed = 40) {
             setTimeout(type, speed);
         } else {
             element.classList.remove('typing-text');
+}
+
+        body {
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #ff9ff3, #54a0ff);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .countdown {
+            font-size: 10rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 20px rgba(255,255,255,0.8);
+            margin-bottom: 2rem;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .birthday-title {
+            font-size: 4rem;
+            color: white;
+            text-shadow: 0 0 30px rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideInUp 1s ease forwards 3.5s;
+        }
+
+        @keyframes slideInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card-container {
+            opacity: 0;
+            transform: scale(0.8) translateY(50px);
+            transition: all 1s ease 5s;
+        }
+
+        .card-container.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .birthday-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .birthday-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .card-title {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        }
+
+        .card-subtitle {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .wish-content {
+            background: rgba(255,255,255,0.95);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+            font-family: 'Georgia', serif;
+        }
+
+        .wish-content.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wish-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .wish-signature {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .typing-text {
+            border-right: 3px solid #333;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { border-color: transparent; }
+            51%, 100% { border-color: #333; }
+        }
+
+        .balloons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 40px;
+            background: #333;
+        }
+
+        .balloon:nth-child(1) { 
+            left: 10%; 
+            animation-delay: 0s; 
+            background: radial-gradient(circle at 30% 30%, #ff6b6b, #ee5a52); 
+        }
+        .balloon:nth-child(2) { 
+            left: 20%; 
+            animation-delay: 1s; 
+            background: radial-gradient(circle at 30% 30%, #feca57, #f39c12); 
+        }
+        .balloon:nth-child(3) { 
+            left: 80%; 
+            animation-delay: 2s; 
+            background: radial-gradient(circle at 30% 30%, #ff9ff3, #e84393); 
+        }
+        .balloon:nth-child(4) { 
+            left: 90%; 
+            animation-delay: 0.5s; 
+            background: radial-gradient(circle at 30% 30%, #54a0ff, #3867d6); 
+        }
+        .balloon:nth-child(5) { 
+            left: 30%; 
+            animation-delay: 3s; 
+            background: radial-gradient(circle at 30% 30%, #5f27cd, #341f97); 
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .music-control {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+
+        .music-control:hover {
+            background: rgba(255,255,255,0.3);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .countdown { font-size: 6rem; }
+            .birthday-title { font-size: 2.5rem; }
+            .card-title { font-size: 2rem; }
+            .wish-text { font-size: 1.1rem; }
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+#bgVideo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: brightness(0.6) blur(2px);
+}
+
+/* overlay biar lebih cinematic */
+body::before {
+    content: '';
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0,0,0,0.2), rgba(0,0,0,0.7));
+    z-index: -1;
+}
+
+/* glow effect */
+.birthday-title {
+    text-shadow: 0 0 20px #fff, 0 0 40px #ff9ff3, 0 0 60px #ff6b6b;
+}
+
+/* kartu flip animation */
+.birthday-card {
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.birthday-card.open {
+    transform: rotateY(180deg);
+}
+
+/* stars */
+.star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    opacity: 0.8;
+    animation: twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.2; }
+    to { opacity: 1; }
     }
     type();
 }
+    </style>
+</head>
+<body>
+<video autoplay muted loop id="bgVideo">
+    <source src="https://cdn.coverr.co/videos/coverr-colorful-bokeh-1576/1080p.mp4" type="video/mp4">
+</video>
+    <div class="balloons">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
 
+    <button class="music-control" id="musicToggle">🎵</button>
+
+    <div class="container">
+        <div class="countdown" id="countdown">3</div>
+        <h1 class="birthday-title" id="birthdayTitle">Happy Birthday Caca! 🎉🎂</h1>
+        
+        <div class="card-container" id="cardContainer">
+            <div class="birthday-card" id="birthdayCard">
+                <h2 class="card-title">Buka Kartu Ucapanmu! 💌</h2>
+                <p class="card-subtitle">Klik di sini untuk melihat ucapan spesial</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Replace the audio section with this: -->
+<audio id="birthdaySong" loop>
+    <!-- Fallback silent audio for browsers blocking autoplay -->
+    <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSq2+Pg7a9VEA=" type="audio/wav">
+</audio>
+
+    <script>
+        let countdown = 3;
+        const countdownEl = document.getElementById('countdown');
+        const birthdayTitle = document.getElementById('birthdayTitle');
+        const cardContainer = document.getElementById('cardContainer');
+        const birthdayCard = document.getElementById('birthdayCard');
+        const birthdaySong = document.getElementById('birthdaySong');
+        const musicToggle = document.getElementById('musicToggle');
+        let hasInteracted = false;
+
+        // Typewriter effect function
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            element.classList.add('typing-text');
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    element.classList.remove('typing-text');
+                }
+            }
+            type();
+        }
 // ================= COUNTDOWN =================
 const countdownInterval = setInterval(() => {
     countdown--;
     countdownEl.textContent = countdown;
 
+        // Countdown
+        const countdownInterval = setInterval(() => {
+            countdown--;
+            countdownEl.textContent = countdown;
+            
+            if (countdown < 0) {
+                clearInterval(countdownInterval);
+                countdownEl.style.display = 'none';
+                birthdayTitle.style.display = 'block';
+                
+                setTimeout(() => {
+                    cardContainer.classList.add('active');
+                    if (hasInteracted) {
+                        birthdaySong.play().catch(e => console.log('Autoplay prevented'));
+                    }
+                }, 500);
+            }
+        }, 1000);
     if (countdown < 0) {
         clearInterval(countdownInterval);
         countdownEl.style.display = 'none';
         birthdayTitle.style.display = 'block';
 
+        // Music toggle
+        musicToggle.addEventListener('click', function() {
+            hasInteracted = true;
+            if (birthdaySong.paused) {
+                birthdaySong.play().catch(e => {});
+                this.textContent = '🔊';
+            } else {
+                birthdaySong.pause();
+                this.textContent = '🔇';
         setTimeout(() => {
             cardContainer.classList.add('active');
             if (hasInteracted) {
                 birthdaySong.play().catch(() => {});
-            }
+}
+        });
         }, 500);
     }
 }, 1000);
@@ -59,80 +441,81 @@ musicToggle.addEventListener('click', function () {
     }
 });
 
+        // Card click event with typewriter effect
+        birthdayCard.addEventListener('click', function() {
 // ================= CARD OPEN =================
 birthdayCard.addEventListener('click', function () {
-    this.classList.add('open');
+this.classList.add('open');
 
-    setTimeout(() => {
+setTimeout(() => {
+        const wishContent = `
         this.innerHTML = `
-            <div class="wish-content show">
-                <div class="wish-text" id="wishText"></div>
-                <div class="wish-signature">
-                    🥰 Dari seseorang 🥰
-                </div>
-            </div>
-        `;
+           <div class="wish-content show">
+               <div class="wish-text" id="wishText"></div>
+               <div class="wish-signature">
+                   🥰 Dari seseorang 🥰
+               </div>
+           </div>
+       `;
+        
+        this.innerHTML = wishContent;
 
-        const wishText = document.getElementById('wishText');
+const wishText = document.getElementById('wishText');
 
-        const fullText = `🎉 Happy birthday, Caca! 🎉
-
-Another year, another chapter in your beautiful story.
-May your life always be filled with love, happiness, and success.
+@@ -412,27 +82,22 @@ <h2 class="card-title">Buka Kartu Ucapanmu! 💌</h2>
 
 Stay amazing, stay beautiful. ✨🥰`;
 
+        typeWriter(wishText, fullText, 40);
+
         typeWriter(wishText, fullText, 35);
-        createConfetti();
+createConfetti();
 
-    }, 400);
+}, 400);
 
+    birthdaySong.play().catch(e => {});
     hasInteracted = true;
     birthdaySong.play().catch(() => {});
 });
 
+            
+            typeWriter(wishText, fullText, 40);
+            
+            hasInteracted = true;
+            birthdaySong.play().catch(e => {});
+        });
+
+        // Confetti effect
+        function createConfetti() {
 // ================= CONFETTI =================
 function createConfetti() {
-    for (let i = 0; i < 120; i++) {
-        const confetti = document.createElement('div');
+for (let i = 0; i < 120; i++) {
+const confetti = document.createElement('div');
 
-        const size = Math.random() * 8 + 4;
+const size = Math.random() * 8 + 4;
 
-        confetti.style.cssText = `
-            position: fixed;
-            left: ${Math.random() * 100}vw;
-            top: -10px;
-            width: ${size}px;
-            height: ${size * 0.4}px;
-            background: hsl(${Math.random() * 360}, 80%, 60%);
-            transform: rotate(${Math.random() * 360}deg);
-            opacity: 0.9;
-            pointer-events: none;
-            z-index: 999;
-            animation: fall ${Math.random() * 3 + 4}s linear forwards;
-        `;
-
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 7000);
-    }
+confetti.style.cssText = `
+           position: fixed;
+           left: ${Math.random() * 100}vw;
+@@ -452,14 +117,7 @@ <h2 class="card-title">Buka Kartu Ucapanmu! 💌</h2>
+}
 }
 
+        // Handle user interaction for autoplay
+        document.addEventListener('click', function handleInteraction() {
+            hasInteracted = true;
+            if (birthdaySong.paused && birthdayTitle.style.display !== 'none') {
+                birthdaySong.play().catch(e => {});
+            }
+            document.removeEventListener('click', handleInteraction);
+        }, { once: true });
 // ================= STARS =================
 function createStars() {
-    for (let i = 0; i < 80; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star');
-
-        star.style.top = Math.random() * 100 + 'vh';
-        star.style.left = Math.random() * 100 + 'vw';
-        star.style.animationDuration = (Math.random() * 2 + 1) + 's';
-
-        document.body.appendChild(star);
-    }
-}
+for (let i = 0; i < 80; i++) {
+const star = document.createElement('div');
+@@ -475,6 +133,15 @@ <h2 class="card-title">Buka Kartu Ucapanmu! 💌</h2>
 
 createStars();
-
 // ================= AUTOPLAY FIX =================
 document.addEventListener('click', function handleInteraction() {
     hasInteracted = true;
@@ -143,5 +526,7 @@ document.addEventListener('click', function handleInteraction() {
 
     document.removeEventListener('click', handleInteraction);
 }, { once: true });
+    </script>
+</body>
+</html>
 
-</script>
